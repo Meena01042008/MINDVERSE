@@ -1,0 +1,735 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #080b12;
+  color: #f5f7fa;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(82, 111, 157, 0.2),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 45%,
+      rgba(55, 74, 110, 0.08),
+      transparent 28%
+    ),
+    #080b12;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 70px;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px
+    );
+  background-size: 55px 55px;
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 90%
+  );
+}
+
+.hero-content {
+  position: relative;
+  width: min(900px, 100%);
+  text-align: center;
+}
+
+.eyebrow {
+  color: #8192aa;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(64px, 13vw, 150px);
+  line-height: 0.9;
+  letter-spacing: -0.075em;
+  font-weight: 800;
+  color: #f7f9fc;
+  text-shadow:
+    0 0 45px rgba(126, 155, 197, 0.12);
+}
+
+.tagline {
+  margin: 24px 0 20px;
+  color: #c5d0df;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+}
+
+.hero-description {
+  width: min(650px, 100%);
+  margin: 0 auto;
+  color: #8796ab;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.hero-line {
+  width: 100px;
+  height: 1px;
+  margin: 38px auto 0;
+  background: #536985;
+  box-shadow: 0 0 18px rgba(83, 105, 133, 0.5);
+}
+
+/* WORLDS */
+
+.world-section {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 40px 0 90px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.section-heading > div > span,
+.experience-card > span {
+  color: #72849d;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+.section-heading h2 {
+  margin: 10px 0 0;
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.section-heading > p {
+  max-width: 300px;
+  margin: 0;
+  color: #7f8fa5;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: right;
+}
+
+.world-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.world-card {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 22px;
+  border: 1px solid #202c3f;
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(24, 32, 48, 0.92),
+      rgba(13, 18, 29, 0.88)
+    );
+  color: #f5f7fa;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.world-card::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: -80px;
+  right: -60px;
+  border-radius: 50%;
+  background: rgba(108, 137, 177, 0.1);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.world-card:hover {
+  transform: translateY(-5px);
+  border-color: #506681;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(28, 39, 58, 0.96),
+      rgba(14, 20, 32, 0.94)
+    );
+}
+
+.world-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.world-number {
+  color: #6f819a;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+
+.world-symbol {
+  color: #cbd6e4;
+  font-size: 22px;
+}
+
+.world-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.world-type {
+  color: #778ba5;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+}
+
+.world-body h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.world-body p {
+  margin: 0;
+  color: #8f9eb2;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.world-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  border-top: 1px solid #202b3c;
+  color: #8495ab;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+
+.world-footer span:last-child {
+  color: #c6d2e1;
+  font-size: 16px;
+}
+
+/* CORE IDEA */
+
+.experience-section {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 0 0 90px;
+}
+
+.experience-card {
+  padding: 45px;
+  border: 1px solid #202c3f;
+  border-radius: 18px;
+  background: rgba(16, 22, 36, 0.72);
+  text-align: center;
+}
+
+.experience-card h2 {
+  max-width: 850px;
+  margin: 18px auto;
+  font-size: clamp(24px, 4vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.experience-card p {
+  max-width: 650px;
+  margin: auto;
+  color: #8e9db1;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* FOOTER */
+
+.app-footer {
+  width: min(1180px, calc(100% - 40px));
+  margin: auto;
+  padding: 25px 0 35px;
+  border-top: 1px solid #1b2637;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #5e6f86;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+/* MOBILE */
+
+@media (max-width: 950px) {
+  .world-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    min-height: 65vh;
+  }
+}
+
+@media (max-width: 650px) {
+  .hero {
+    min-height: 70vh;
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 20vw, 100px);
+  }
+
+  .tagline {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-description {
+    font-size: 13px;
+  }
+
+  .world-section,
+  .experience-section {
+    width: calc(100% - 28px);
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-heading > p {
+    margin-top: 16px;
+    text-align: left;
+  }
+
+  .world-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .world-card {
+    min-height: 250px;
+  }
+
+  .experience-card {
+    padding: 30px 20px;
+  }
+
+  .app-footer {
+    width: calc(100% - 28px);
+    flex-direction: column;
+  }
+}
+/* =====================================================
+   MINDVERSE - COMMON WORLD EXPERIENCE
+   Same cinematic background for ALL WORLDS
+   ===================================================== */
+
+:root {
+  --mind-bg:
+    url("https://images.unsplash.com/photo-1534791547706-3c0b2d9b4b3b?auto=format&fit=crop&w=2400&q=90");
+}
+
+/* Main application background */
+
+.app,
+#root {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(
+      rgba(4, 7, 18, 0.18),
+      rgba(4, 7, 18, 0.28)
+    ),
+    var(--mind-bg) center / cover fixed no-repeat;
+}
+
+/* Every world uses the same cinematic environment */
+
+.mystery-game,
+.shadow-game,
+.architect-game,
+.gravity-game,
+.signal-game,
+.dream-game,
+.fusion-game,
+.echo-game {
+  min-height: 100vh !important;
+
+  background:
+    linear-gradient(
+      rgba(4, 7, 18, 0.18),
+      rgba(4, 7, 18, 0.25)
+    ) !important;
+
+  background-color: transparent !important;
+}
+
+/* Remove the heavy inner world background */
+
+.mystery-card,
+.shadow-card,
+.architect-card {
+  background:
+    rgba(8, 12, 25, 0.62) !important;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(120, 145, 200, 0.22);
+}
+
+/* Keep world content visually transparent */
+
+.mystery-main,
+.shadow-content,
+.architect-content {
+  background: transparent !important;
+}
+
+/* Cinematic header */
+
+.mystery-header,
+.shadow-header,
+.architect-header {
+  background: rgba(5, 9, 20, 0.32);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Make all world pages feel connected */
+
+.mystery-game,
+.shadow-game,
+.architect-game,
+.gravity-game,
+.signal-game,
+.dream-game,
+.fusion-game,
+.echo-game {
+  color: #f5f7fa;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .mystery-game,
+  .shadow-game,
+  .architect-game,
+  .gravity-game,
+  .signal-game,
+  .dream-game,
+  .fusion-game,
+  .echo-game {
+    background:
+      linear-gradient(
+        rgba(4, 7, 18, 0.2),
+        rgba(4, 7, 18, 0.3)
+      ) !important;
+  }
+}
+/* =========================================================
+   MINDVERSE — SAME CINEMATIC FRAME FOR WORLDS 1–8
+   ========================================================= */
+
+/* Common full-screen world background */
+
+.mystery-game,
+.shadow-game,
+.architect-game,
+.gravity-game,
+.signal-game,
+.dream-game,
+.fusion-game,
+.echo-game {
+  min-height: 100vh !important;
+  width: 100% !important;
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      rgba(3, 7, 20, 0.18),
+      rgba(3, 7, 20, 0.25)
+    ) !important;
+
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+
+/* =========================================================
+   WORLD 4
+   ========================================================= */
+
+.gravity-game {
+  background:
+    linear-gradient(
+      rgba(3, 7, 20, 0.16),
+      rgba(3, 7, 20, 0.24)
+    ) !important;
+}
+
+.gravity-content {
+  background: transparent !important;
+}
+
+
+/* =========================================================
+   WORLD 5
+   ========================================================= */
+
+.signal-game {
+  background:
+    linear-gradient(
+      rgba(3, 7, 20, 0.16),
+      rgba(3, 7, 20, 0.24)
+    ) !important;
+}
+
+.signal-content {
+  background: transparent !important;
+}
+
+
+/* =========================================================
+   WORLD 6
+   ========================================================= */
+
+.dream-game {
+  background:
+    linear-gradient(
+      rgba(3, 7, 20, 0.16),
+      rgba(3, 7, 20, 0.24)
+    ) !important;
+}
+
+.dream-content {
+  background: transparent !important;
+}
+
+
+/* =========================================================
+   WORLD 7
+   ========================================================= */
+
+.fusion-game {
+  background:
+    linear-gradient(
+      rgba(3, 7, 20, 0.16),
+      rgba(3, 7, 20, 0.24)
+    ) !important;
+}
+
+.fusion-content {
+  background: transparent !important;
+}
+
+
+/* =========================================================
+   WORLD 8
+   ========================================================= */
+
+.echo-game {
+  background:
+    linear-gradient(
+      rgba(3, 7, 20, 0.16),
+      rgba(3, 7, 20, 0.24)
+    ) !important;
+}
+
+.echo-content {
+  background: transparent !important;
+}
+
+
+/* =========================================================
+   COMMON HEADER
+   ========================================================= */
+
+.gravity-header,
+.signal-header,
+.dream-header,
+.fusion-header,
+.echo-header {
+  background: rgba(4, 8, 20, 0.30) !important;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border-bottom: 1px solid
+    rgba(150, 170, 210, 0.18);
+}
+
+
+/* =========================================================
+   COMMON GAME CONTAINER
+   ========================================================= */
+
+.gravity-card,
+.signal-card,
+.dream-card,
+.fusion-card,
+.echo-card {
+  background:
+    rgba(7, 11, 25, 0.58) !important;
+
+  border: 1px solid
+    rgba(130, 155, 205, 0.22) !important;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================================
+   COMMON TEXT
+   ========================================================= */
+
+.gravity-game h1,
+.gravity-game h2,
+.gravity-game h3,
+.signal-game h1,
+.signal-game h2,
+.signal-game h3,
+.dream-game h1,
+.dream-game h2,
+.dream-game h3,
+.fusion-game h1,
+.fusion-game h2,
+.fusion-game h3,
+.echo-game h1,
+.echo-game h2,
+.echo-game h3 {
+  color: #ffffff !important;
+}
+
+.gravity-game p,
+.signal-game p,
+.dream-game p,
+.fusion-game p,
+.echo-game p {
+  color: #c2cada !important;
+}
+
+
+/* =========================================================
+   DIFFICULTY BAR
+   ========================================================= */
+
+.gravity-difficulty,
+.signal-difficulty,
+.dream-difficulty,
+.fusion-difficulty,
+.echo-difficulty {
+  background: rgba(5, 9, 20, 0.42) !important;
+
+  border: 1px solid
+    rgba(130, 150, 190, 0.18);
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .gravity-game,
+  .signal-game,
+  .dream-game,
+  .fusion-game,
+  .echo-game {
+    min-height: 100vh !important;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .gravity-card,
+  .signal-card,
+  .dream-card,
+  .fusion-card,
+  .echo-card {
+    background:
+      rgba(7, 11, 25, 0.68) !important;
+  }
+}

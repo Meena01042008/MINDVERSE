@@ -1,0 +1,345 @@
+.architect-game {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(91, 112, 170, 0.14),
+      transparent 38%
+    ),
+    #080b12;
+  color: #f5f7fa;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.architect-header {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding-bottom: 26px;
+  border-bottom: 1px solid #263247;
+}
+
+.architect-back {
+  justify-self: start;
+  border: 1px solid #263247;
+  background: #101624;
+  color: #aab6ca;
+  padding: 11px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.architect-brand {
+  text-align: center;
+}
+
+.architect-brand span,
+.architect-score span,
+.architect-heading > span {
+  color: #7f8da5;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.architect-brand h1 {
+  margin: 6px 0 0;
+  font-size: clamp(19px, 3vw, 29px);
+  letter-spacing: 0.1em;
+}
+
+.architect-score {
+  justify-self: end;
+  text-align: right;
+}
+
+.architect-score strong {
+  display: block;
+  font-size: 24px;
+  margin-top: 4px;
+}
+
+.architect-content {
+  max-width: 900px;
+  margin: auto;
+  padding-top: 44px;
+}
+
+.architect-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: auto;
+}
+
+.architect-heading > span {
+  color: #91a7dc;
+}
+
+.architect-heading h2 {
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 10px 0;
+}
+
+.architect-heading p {
+  color: #8f9bad;
+  line-height: 1.7;
+}
+
+.architect-difficulty {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 26px 0;
+  flex-wrap: wrap;
+}
+
+.architect-difficulty > span {
+  color: #69778d;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  align-self: center;
+  margin-right: 5px;
+}
+
+.architect-difficulty button {
+  border: 1px solid #263247;
+  background: #101624;
+  color: #8794aa;
+  padding: 9px 17px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.architect-difficulty button.selected {
+  background: #202c43;
+  border-color: #7286ad;
+  color: #fff;
+}
+
+.architect-card {
+  min-height: 520px;
+  border: 1px solid #263247;
+  border-radius: 22px;
+  background: rgba(16, 22, 36, 0.92);
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.architect-state {
+  width: 100%;
+  text-align: center;
+}
+
+.architect-icon {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 18px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: #151e2e;
+  border: 1px solid #3c4d6b;
+  color: #aebde4;
+  font-size: 25px;
+}
+
+.architect-icon.success {
+  color: #b9ead0;
+  border-color: #557d68;
+}
+
+.architect-icon.failed {
+  color: #dca8ae;
+  border-color: #704b52;
+}
+
+.architect-state > span {
+  color: #7d8aa0;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+}
+
+.architect-state h3 {
+  font-size: 30px;
+  margin: 12px 0;
+}
+
+.architect-state p {
+  max-width: 500px;
+  margin: 10px auto;
+  color: #909caf;
+  line-height: 1.65;
+}
+
+.architect-info {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+
+.architect-info span {
+  background: #151e2e;
+  border: 1px solid #293852;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #9aa8bd;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.architect-start {
+  margin-top: 18px;
+  padding: 13px 22px;
+  border-radius: 10px;
+  border: 1px solid #65799f;
+  background: #19243a;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+}
+
+.architect-live {
+  max-width: 550px;
+  margin: 0 auto 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.architect-live span {
+  color: #8290a7;
+  font-size: 10px;
+}
+
+.architect-live strong {
+  color: #fff;
+  font-size: 20px;
+}
+
+.architect-progress {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  color: #75839a;
+  font-size: 11px;
+}
+
+.architect-progress strong {
+  color: #fff;
+}
+
+.architect-grid {
+  width: min(100%, 500px);
+  margin: auto;
+  display: grid;
+  gap: 9px;
+}
+
+.architect-cell {
+  aspect-ratio: 1;
+  padding: 0;
+  border-radius: 9px;
+  border: 1px solid #2c3a52;
+  background: #101827;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+button.architect-cell:hover {
+  border-color: #65799d;
+  transform: translateY(-2px);
+}
+
+.architect-cell span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  background:
+    radial-gradient(
+      circle,
+      rgba(133, 159, 220, 0.35),
+      rgba(67, 88, 130, 0.18)
+    );
+  border: 1px solid #7185ad;
+  box-shadow: 0 0 18px rgba(100, 130, 190, 0.15);
+}
+
+.preview-grid .target span {
+  background:
+    radial-gradient(
+      circle,
+      rgba(170, 190, 245, 0.55),
+      rgba(74, 98, 150, 0.2)
+    );
+}
+
+.selected-cell {
+  border-color: #7087b5;
+  background: #1a2942;
+}
+
+.architect-stats {
+  display: flex;
+  justify-content: space-between;
+  width: min(100%, 500px);
+  margin: 14px auto 0;
+  color: #68768d;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.architect-hint {
+  color: #78869c;
+  margin-top: 18px;
+  font-size: 12px;
+}
+
+.architect-final-score {
+  display: block;
+  font-size: 28px;
+  color: #c7d4ff;
+  margin-top: 18px;
+}
+
+@media (max-width: 700px) {
+  .architect-game {
+    padding: 15px;
+  }
+
+  .architect-header {
+    gap: 10px;
+  }
+
+  .architect-brand h1 {
+    font-size: 16px;
+  }
+
+  .architect-back {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .architect-card {
+    min-height: 430px;
+    padding: 20px 14px;
+  }
+
+  .architect-grid {
+    gap: 6px;
+  }
+
+  .architect-cell {
+    border-radius: 7px;
+  }
+
+  .architect-stats {
+    font-size: 9px;
+  }
+}

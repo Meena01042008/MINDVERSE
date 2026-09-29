@@ -1,0 +1,968 @@
+/* =========================================================
+   MEMORY PARADOX
+   WORLD 02
+   ========================================================= */
+
+.paradox-game {
+  min-height: 100vh;
+  width: 100%;
+
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(85, 105, 165, 0.16),
+      transparent 40%
+    ),
+    #05070d;
+
+  color: #ffffff;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.paradox-header {
+  width: min(1450px, 92%);
+  min-height: 86px;
+
+  margin: 0 auto;
+  padding: 22px 0;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  border-bottom: 1px solid rgba(255,255,255,0.09);
+}
+
+
+.paradox-back {
+  justify-self: start;
+
+  padding: 10px 15px;
+
+  color: #ffffff;
+
+  background: rgba(0,0,0,0.42);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  font-size: 10px;
+  letter-spacing: 0.14em;
+
+  cursor: pointer;
+}
+
+
+.paradox-brand {
+  text-align: center;
+
+  padding: 9px 20px;
+
+  background: rgba(0,0,0,0.38);
+
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+
+.paradox-brand span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #b9c5da;
+
+  font-size: 9px;
+  letter-spacing: 0.28em;
+}
+
+
+.paradox-brand h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  letter-spacing: 0.16em;
+}
+
+
+.paradox-score {
+  justify-self: end;
+
+  padding: 9px 16px;
+
+  text-align: right;
+
+  background: rgba(0,0,0,0.40);
+
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+
+.paradox-score span {
+  display: block;
+
+  color: #9eabc0;
+
+  font-size: 9px;
+
+  letter-spacing: 0.18em;
+}
+
+
+.paradox-score strong {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #ffffff;
+
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.paradox-main {
+  width: min(1100px, 92%);
+
+  margin: 0 auto;
+
+  padding: 70px 0 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.paradox-heading {
+  width: 100%;
+  max-width: 850px;
+
+  padding: 24px 30px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  background: rgba(0,0,0,0.43);
+
+  border: 1px solid rgba(255,255,255,0.10);
+
+  backdrop-filter: blur(14px);
+}
+
+
+.paradox-label {
+  color: #b9c5da;
+
+  font-size: 10px;
+
+  letter-spacing: 0.28em;
+}
+
+
+.paradox-heading h2 {
+  margin: 20px 0 18px;
+
+  color: #ffffff;
+
+  font-size: clamp(50px,7vw,82px);
+
+  line-height: 0.92;
+
+  font-weight: 300;
+
+  letter-spacing: -0.045em;
+}
+
+
+.paradox-heading h2 span {
+  color: #aebbd1;
+
+  font-style: italic;
+}
+
+
+.paradox-heading p {
+  margin: 0;
+
+  color: #bdc8d9;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   DIFFICULTY
+   ========================================================= */
+
+.paradox-difficulty {
+  width: min(720px,100%);
+
+  margin: 45px auto 28px;
+
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  background: rgba(0,0,0,0.72);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(15px);
+}
+
+
+.paradox-difficulty > span {
+  color: #d0d8e6;
+
+  font-size: 9px;
+
+  letter-spacing: 0.2em;
+}
+
+
+.paradox-difficulty > div {
+  display: flex;
+
+  gap: 6px;
+}
+
+
+.paradox-difficulty button {
+  min-width: 85px;
+
+  padding: 10px 16px;
+
+  color: #b6c1d2;
+
+  background: rgba(255,255,255,0.025);
+
+  border: 1px solid rgba(255,255,255,0.10);
+
+  font-size: 10px;
+
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+}
+
+
+.paradox-difficulty button.selected,
+.paradox-difficulty button:hover {
+  color: #ffffff;
+
+  background: rgba(255,255,255,0.10);
+
+  border-color: rgba(255,255,255,0.30);
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.paradox-card {
+  width: 100%;
+
+  min-height: 560px;
+
+  padding: 60px 70px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(2,6,16,0.76);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,0.40);
+
+  backdrop-filter: blur(18px);
+}
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+.paradox-state {
+  width: 100%;
+  max-width: 850px;
+
+  text-align: center;
+}
+
+
+.paradox-state > span {
+  color: #b9c5da;
+
+  font-size: 10px;
+
+  letter-spacing: 0.25em;
+}
+
+
+.paradox-state h3 {
+  margin: 18px 0 12px;
+
+  color: #ffffff;
+
+  font-size: clamp(24px,4vw,38px);
+
+  line-height: 1.2;
+
+  font-weight: 400;
+}
+
+
+.paradox-state > p {
+  max-width: 620px;
+
+  margin: 0 auto 30px;
+
+  color: #bec8d8;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.paradox-icon,
+.rewind-symbol {
+  width: 76px;
+  height: 76px;
+
+  margin: 0 auto 25px;
+
+  display: grid;
+  place-items: center;
+
+  color: #dce5f4;
+
+  font-size: 30px;
+
+  border: 1px solid rgba(170,185,220,0.40);
+
+  border-radius: 50%;
+
+  background: rgba(0,0,0,0.40);
+}
+
+
+/* =========================================================
+   START BUTTON
+   ========================================================= */
+
+.paradox-start {
+  min-width: 245px;
+
+  padding: 15px 25px;
+
+  color: #ffffff;
+
+  background: rgba(10,15,28,0.88);
+
+  border: 1px solid rgba(180,195,225,0.38);
+
+  font-size: 10px;
+
+  letter-spacing: 0.16em;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.paradox-start:hover {
+  background: rgba(30,40,62,0.95);
+
+  border-color: rgba(210,220,240,0.60);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.paradox-status,
+.echo-header {
+  width: 100%;
+
+  margin-bottom: 30px;
+
+  padding: 14px 18px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+
+  background: rgba(0,0,0,0.38);
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.paradox-status div,
+.echo-header div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  text-align: left;
+}
+
+
+.paradox-status span,
+.echo-header span {
+  color: #7f8da4;
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+}
+
+
+.paradox-status strong,
+.echo-header strong {
+  color: #ffffff;
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   TIMELINE
+   ========================================================= */
+
+.timeline {
+  width: 100%;
+
+  margin: 25px auto 30px;
+
+  display: grid;
+
+  grid-template-columns: repeat(5,1fr);
+
+  gap: 8px;
+}
+
+
+.timeline-slot {
+  min-height: 75px;
+
+  padding: 12px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  text-align: left;
+
+  background: rgba(255,255,255,0.025);
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.timeline-slot span {
+  color: #6f7c93;
+
+  font-size: 8px;
+}
+
+
+.timeline-slot strong {
+  color: #657187;
+
+  font-size: 9px;
+
+  letter-spacing: 0.08em;
+}
+
+
+.timeline-slot.filled {
+  background: rgba(90,110,150,0.14);
+
+  border-color: rgba(160,175,210,0.35);
+}
+
+
+.timeline-slot.filled strong {
+  color: #dbe3ef;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.paradox-actions {
+  display: grid;
+
+  grid-template-columns: repeat(3,1fr);
+
+  gap: 10px;
+}
+
+
+.paradox-actions button {
+  min-height: 75px;
+
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  color: #c8d2e2;
+
+  background: rgba(0,0,0,0.40);
+
+  border: 1px solid rgba(255,255,255,0.10);
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.paradox-actions button span {
+  font-size: 22px;
+}
+
+
+.paradox-actions button strong {
+  font-size: 9px;
+
+  letter-spacing: 0.10em;
+}
+
+
+.paradox-actions button:hover:not(:disabled) {
+  color: #ffffff;
+
+  background: rgba(90,110,150,0.16);
+
+  border-color: rgba(180,195,225,0.35);
+
+  transform: translateY(-2px);
+}
+
+
+.paradox-actions button:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   ECHO ZONE
+   ========================================================= */
+
+.echo-zone {
+  width: 100%;
+
+  min-height: 190px;
+
+  margin: 25px 0;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(80,100,170,0.13),
+      transparent 65%
+    ),
+    rgba(0,0,0,0.38);
+
+  border: 1px solid rgba(255,255,255,0.09);
+}
+
+
+/* Past orb */
+
+.past-orb {
+  width: 125px;
+  height: 125px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  padding: 15px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  color: #ffffff;
+
+  font-size: 9px;
+
+  letter-spacing: 0.08em;
+
+  border: 1px solid rgba(170,185,220,0.40);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(100,125,190,0.22),
+      rgba(0,0,0,0.70)
+    );
+
+  box-shadow:
+    0 0 60px rgba(80,110,190,0.14);
+}
+
+
+/* Timeline line */
+
+.timeline-line {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.timeline-line i {
+  flex: 1;
+
+  height: 1px;
+
+  background: rgba(150,170,210,0.35);
+}
+
+
+/* Door */
+
+.future-door {
+  width: 150px;
+
+  min-height: 110px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  background: rgba(0,0,0,0.50);
+
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+
+.future-door span {
+  color: #7f8da4;
+
+  font-size: 8px;
+
+  letter-spacing: 0.16em;
+}
+
+
+.future-door strong {
+  color: #dce4f0;
+
+  font-size: 11px;
+
+  letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.control-title {
+  margin: 25px 0 12px;
+
+  color: #8c99af;
+
+  font-size: 9px;
+
+  letter-spacing: 0.20em;
+}
+
+
+.world-controls {
+  display: grid;
+
+  grid-template-columns: repeat(4,1fr);
+
+  gap: 8px;
+}
+
+
+.world-controls button {
+  min-height: 70px;
+
+  color: #bac5d6;
+
+  background: rgba(0,0,0,0.45);
+
+  border: 1px solid rgba(255,255,255,0.09);
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+
+.world-controls button span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 18px;
+}
+
+
+.world-controls button {
+  font-size: 8px;
+
+  letter-spacing: 0.10em;
+}
+
+
+.world-controls button:hover:not(:disabled) {
+  color: #ffffff;
+
+  background: rgba(80,100,150,0.15);
+
+  border-color: rgba(180,195,225,0.35);
+}
+
+
+.world-controls button:disabled {
+  opacity: 0.30;
+
+  cursor: not-allowed;
+}
+
+
+.energy-display {
+  margin-top: 15px;
+
+  color: #7d8aa0;
+
+  font-size: 9px;
+
+  letter-spacing: 0.14em;
+}
+
+
+/* =========================================================
+   RESULT
+   ========================================================= */
+
+.result .result-icon {
+  width: 75px;
+  height: 75px;
+
+  margin: 0 auto 25px;
+
+  display: grid;
+  place-items: center;
+
+  color: #ffffff;
+
+  border: 1px solid rgba(180,195,225,0.35);
+
+  border-radius: 50%;
+
+  background: rgba(0,0,0,0.40);
+
+  font-size: 28px;
+}
+
+
+.final-score {
+  margin: 25px auto;
+
+  padding: 15px 25px;
+
+  width: 180px;
+
+  box-sizing: border-box;
+
+  color: #7f8da4;
+
+  background: rgba(0,0,0,0.42);
+
+  border: 1px solid rgba(255,255,255,0.09);
+
+  font-size: 8px;
+
+  letter-spacing: 0.15em;
+}
+
+
+.final-score strong {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #ffffff;
+
+  font-size: 24px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .paradox-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .paradox-brand {
+    text-align: right;
+  }
+
+  .paradox-score {
+    display: none;
+  }
+
+  .paradox-main {
+    padding-top: 50px;
+  }
+
+  .paradox-heading {
+    padding: 20px;
+  }
+
+  .paradox-difficulty {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .paradox-difficulty > div {
+    display: flex;
+  }
+
+  .paradox-difficulty button {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .paradox-card {
+    padding: 35px 20px;
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .paradox-actions {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .echo-zone {
+    flex-direction: column;
+  }
+
+  .timeline-line {
+    width: 100%;
+  }
+
+  .world-controls {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+
+@media (max-width: 430px) {
+
+  .paradox-heading h2 {
+    font-size: 48px;
+  }
+
+  .paradox-brand h1 {
+    font-size: 13px;
+  }
+
+  .paradox-back {
+    font-size: 8px;
+  }
+
+  .paradox-start {
+    width: 100%;
+  }
+
+  .paradox-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .world-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+}
