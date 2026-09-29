@@ -12,6 +12,7 @@ import MemoryFusion from "./games/MemoryFusion";
 import MemoryEcho from "./games/MemoryEcho";
 
 import "./App.css";
+import "./games/WorldCommon.css";
 
 const worlds = [
   {
