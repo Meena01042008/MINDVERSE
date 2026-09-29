@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Login from "./Login";
 
 import MemoryMystery from "./games/MemoryMystery";
 import MemoryShadow from "./games/MemoryShadow";
@@ -80,6 +81,7 @@ const worlds = [
 
 function App() {
   const [activeGame, setActiveGame] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const openGame = (game) => {
     setActiveGame(game);
@@ -88,6 +90,11 @@ function App() {
   const goHome = () => {
     setActiveGame(null);
   };
+
+  // Show Login page first
+  if (!isLoggedIn) {
+    return <Login onLogin={() => setIsLoggedIn(true)} />;
+  }
 
   if (activeGame === "memory-mystery") {
     return <MemoryMystery onBack={goHome} />;
