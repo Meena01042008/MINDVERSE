@@ -83,7 +83,6 @@ const worlds = [
 function App() {
   const [activeGame, setActiveGame] = useState(null);
   const [showProfile, setShowProfile] = useState(false);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [user, setUser] = useState({
@@ -119,48 +118,117 @@ function App() {
   const openGame = (game) => {
     setShowProfile(false);
     setActiveGame(game);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const goHome = () => {
     setActiveGame(null);
     setShowProfile(false);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const openProfile = () => {
     setActiveGame(null);
     setShowProfile(true);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const goToSection = (sectionId) => {
+    setActiveGame(null);
+    setShowProfile(false);
+
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 50);
   };
 
   /*
-    Later each game will call this when a level is completed.
+    Game level completion.
 
-    Example:
+    When a game calls:
+
     onLevelComplete(50)
 
-    Then:
-    Score +50
-    Level +1
+    score increases by 50
+    and level increases by 1.
   */
+
   const handleLevelComplete = (points = 50) => {
     setScore((previousScore) => previousScore + points);
+
     setLevel((previousLevel) => previousLevel + 1);
   };
 
-  // LOGIN FIRST
+  /* =========================
+     LOGIN
+  ========================= */
+
   if (!isLoggedIn) {
     return <Login onLogin={handleLogin} />;
   }
 
-  // PROFILE PAGE
+  /* =========================
+     PROFILE
+  ========================= */
+
   if (showProfile) {
     return (
       <main className="app">
+
         <div className="page-overlay"></div>
 
         <nav className="top-navbar">
-          <div className="navbar-logo">MINDVERSE</div>
+
+          <div className="navbar-logo">
+            MINDVERSE
+          </div>
+
+          <div className="navbar-links">
+
+            <button onClick={goHome}>
+              Home
+            </button>
+
+            <button
+              onClick={() => goToSection("worlds-section")}
+            >
+              Worlds
+            </button>
+
+            <button
+              onClick={() => goToSection("how-to-play")}
+            >
+              How to Play
+            </button>
+
+            <button
+              onClick={() => goToSection("about-section")}
+            >
+              About
+            </button>
+
+          </div>
 
           <div className="navbar-right">
+
             <div className="navbar-stat">
               ⭐ Score: {score}
             </div>
@@ -173,18 +241,27 @@ function App() {
               className="navbar-user"
               onClick={goHome}
             >
+
               <span className="user-avatar">
                 {user.username.charAt(0).toUpperCase()}
               </span>
 
-              <span>{user.username}</span>
+              <span>
+                {user.username}
+              </span>
 
-              <span>⌄</span>
+              <span>
+                ⌄
+              </span>
+
             </button>
+
           </div>
+
         </nav>
 
         <section className="profile-section">
+
           <div className="profile-card">
 
             <button
@@ -195,34 +272,61 @@ function App() {
             </button>
 
             <div className="profile-header">
+
               <div className="large-avatar">
                 {user.username.charAt(0).toUpperCase()}
               </div>
 
               <div>
+
                 <span className="profile-label">
                   MINDVERSE PLAYER
                 </span>
 
-                <h1>{user.username}</h1>
+                <h1>
+                  {user.username}
+                </h1>
+
               </div>
+
             </div>
 
             <div className="profile-details">
 
               <div className="profile-detail">
-                <span>Username</span>
-                <strong>{user.username}</strong>
+
+                <span>
+                  Username
+                </span>
+
+                <strong>
+                  {user.username}
+                </strong>
+
               </div>
 
               <div className="profile-detail">
-                <span>Mobile Number</span>
-                <strong>{user.mobile}</strong>
+
+                <span>
+                  Mobile Number
+                </span>
+
+                <strong>
+                  {user.mobile}
+                </strong>
+
               </div>
 
               <div className="profile-detail">
-                <span>Email ID</span>
-                <strong>{user.email}</strong>
+
+                <span>
+                  Email ID
+                </span>
+
+                <strong>
+                  {user.email}
+                </strong>
+
               </div>
 
             </div>
@@ -243,7 +347,7 @@ function App() {
 
               <div>
                 <span>🎮</span>
-                <small>Worlds</small>
+                <small>Worlds Completed</small>
                 <strong>0 / 8</strong>
               </div>
 
@@ -257,12 +361,17 @@ function App() {
             </button>
 
           </div>
+
         </section>
+
       </main>
     );
   }
 
-  // GAMES
+  /* =========================
+     GAME PAGES
+  ========================= */
+
   if (activeGame === "memory-mystery") {
     return (
       <MemoryMystery
@@ -335,12 +444,19 @@ function App() {
     );
   }
 
-  // HOME
+  /* =========================
+     HOME PAGE
+  ========================= */
+
   return (
     <main className="app">
+
       <div className="page-overlay"></div>
 
-      {/* TOP NAVBAR */}
+      {/* =====================
+          NAVBAR
+      ===================== */}
+
       <nav className="top-navbar">
 
         <div className="navbar-logo">
@@ -348,21 +464,29 @@ function App() {
         </div>
 
         <div className="navbar-links">
+
           <button onClick={goHome}>
             Home
           </button>
 
-          <button>
+          <button
+            onClick={() => goToSection("worlds-section")}
+          >
             Worlds
           </button>
 
-          <button>
+          <button
+            onClick={() => goToSection("how-to-play")}
+          >
             How to Play
           </button>
 
-          <button>
+          <button
+            onClick={() => goToSection("about-section")}
+          >
             About
           </button>
+
         </div>
 
         <div className="navbar-right">
@@ -379,21 +503,33 @@ function App() {
             className="navbar-user"
             onClick={openProfile}
           >
+
             <span className="user-avatar">
               {user.username.charAt(0).toUpperCase()}
             </span>
 
-            <span>{user.username}</span>
+            <span>
+              {user.username}
+            </span>
 
-            <span>⌄</span>
+            <span>
+              ⌄
+            </span>
+
           </button>
 
         </div>
 
       </nav>
 
-      {/* HERO */}
-      <section className="hero">
+      {/* =====================
+          HERO / HOME
+      ===================== */}
+
+      <section
+        className="hero"
+        id="home-section"
+      >
 
         <div className="hero-content">
 
@@ -401,7 +537,9 @@ function App() {
             MINDVERSE / MEMORY GAMING PLATFORM
           </div>
 
-          <h1>MINDVERSE</h1>
+          <h1>
+            MINDVERSE
+          </h1>
 
           <p className="tagline">
             PLAY • THINK • EXPLORE • EVOLVE
@@ -413,23 +551,33 @@ function App() {
             every decision changes what comes next.
           </p>
 
-          <div className="hero-line" />
+          <div className="hero-line"></div>
 
         </div>
 
       </section>
 
-      {/* WORLDS */}
-      <section className="world-section">
+      {/* =====================
+          WORLDS
+      ===================== */}
+
+      <section
+        className="world-section"
+        id="worlds-section"
+      >
 
         <div className="section-heading">
 
           <div>
-            <span>THE MEMORY WORLDS</span>
+
+            <span>
+              THE MEMORY WORLDS
+            </span>
 
             <h2>
               Choose your world.
             </h2>
+
           </div>
 
           <p>
@@ -497,30 +645,109 @@ function App() {
 
       </section>
 
-      {/* CORE IDEA */}
-      <section className="experience-section">
+      {/* =====================
+          HOW TO PLAY
+      ===================== */}
+
+      <section
+        className="experience-section"
+        id="how-to-play"
+      >
 
         <div className="experience-card">
 
           <span>
-            THE CORE IDEA
+            HOW TO PLAY
           </span>
 
           <h2>
-            Experience → Action → Consequence → Memory → Echo
+            PLAY → REMEMBER → COMPLETE → LEVEL UP
           </h2>
 
           <p>
-            MINDVERSE is designed around one idea:
-            the player does not simply play the game —
-            the game remembers the player.
+            Choose any memory world and complete its challenges.
+            Each game tests a different part of your memory,
+            observation, pattern recognition or reasoning.
           </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "15px",
+              marginTop: "30px",
+            }}
+          >
+
+            <div className="profile-detail">
+              <span>STEP 01</span>
+              <strong>Choose a World</strong>
+            </div>
+
+            <div className="profile-detail">
+              <span>STEP 02</span>
+              <strong>Play the Level</strong>
+            </div>
+
+            <div className="profile-detail">
+              <span>STEP 03</span>
+              <strong>Complete the Challenge</strong>
+            </div>
+
+            <div className="profile-detail">
+              <span>STEP 04</span>
+              <strong>Earn Score & Level Up</strong>
+            </div>
+
+          </div>
 
         </div>
 
       </section>
 
-      {/* FOOTER */}
+      {/* =====================
+          ABOUT
+      ===================== */}
+
+      <section
+        className="experience-section"
+        id="about-section"
+      >
+
+        <div className="experience-card">
+
+          <span>
+            ABOUT MINDVERSE
+          </span>
+
+          <h2>
+            A Game That Remembers You
+          </h2>
+
+          <p>
+            MINDVERSE is a cognitive gaming platform designed
+            around memory, observation, reasoning and pattern
+            recognition. The platform contains eight different
+            memory worlds, each offering a different gameplay
+            experience.
+          </p>
+
+          <p style={{ marginTop: "18px" }}>
+            Your journey follows:
+          </p>
+
+          <h2>
+            Experience → Action → Consequence → Memory → Echo
+          </h2>
+
+        </div>
+
+      </section>
+
+      {/* =====================
+          FOOTER
+      ===================== */}
+
       <footer className="app-footer">
 
         <span>
