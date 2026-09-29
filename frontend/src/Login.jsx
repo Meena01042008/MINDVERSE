@@ -2,27 +2,41 @@ import { useState } from "react";
 import "./Login.css";
 
 function Login({ onLogin }) {
+  const [username, setUsername] = useState("");
+  const [mobile, setMobile] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      alert("Please enter your email and password.");
+    if (!username || !mobile || !email || !password) {
+      alert("Please fill all the details.");
       return;
     }
 
-    // Temporary frontend login
-    onLogin();
+    if (mobile.length !== 10) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    onLogin({
+      username,
+      mobile,
+      email,
+    });
   };
 
   return (
     <div className="login-page">
+      <div className="login-overlay"></div>
+
       <div className="login-card">
         <div className="login-logo">✦</div>
 
-        <p className="login-eyebrow">MINDVERSE / COGNITIVE GAMING</p>
+        <p className="login-eyebrow">
+          MINDVERSE / COGNITIVE GAMING
+        </p>
 
         <h1>Welcome Back</h1>
 
@@ -31,7 +45,33 @@ function Login({ onLogin }) {
         </p>
 
         <form onSubmit={handleSubmit}>
+
+          <label>Username</label>
+
+          <input
+            type="text"
+            placeholder="Enter your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <label>Mobile Number</label>
+
+          <input
+            type="tel"
+            placeholder="Enter 10-digit mobile number"
+            value={mobile}
+            onChange={(e) =>
+              setMobile(
+                e.target.value
+                  .replace(/\D/g, "")
+                  .slice(0, 10)
+              )
+            }
+          />
+
           <label>Email</label>
+
           <input
             type="email"
             placeholder="Enter your email"
@@ -40,6 +80,7 @@ function Login({ onLogin }) {
           />
 
           <label>Password</label>
+
           <input
             type="password"
             placeholder="Enter your password"
@@ -50,6 +91,7 @@ function Login({ onLogin }) {
           <button type="submit">
             ENTER MINDVERSE <span>→</span>
           </button>
+
         </form>
 
         <p className="login-footer">
